@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongSchlong.TestApp", "LongSchlong.TestApp\LongSchlong.TestApp.csproj", "{10406CD3-A838-4C84-9C98-EE820223679D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongSchlong", "LongSchlong\LongSchlong.csproj", "{0C342436-D8CA-4DF3-A938-165642BEE330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10406CD3-A838-4C84-9C98-EE820223679D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10406CD3-A838-4C84-9C98-EE820223679D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10406CD3-A838-4C84-9C98-EE820223679D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10406CD3-A838-4C84-9C98-EE820223679D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C342436-D8CA-4DF3-A938-165642BEE330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C342436-D8CA-4DF3-A938-165642BEE330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C342436-D8CA-4DF3-A938-165642BEE330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C342436-D8CA-4DF3-A938-165642BEE330}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94E63965-B093-41E7-AE8A-E01857C04BFA}
+	EndGlobalSection
+EndGlobal
