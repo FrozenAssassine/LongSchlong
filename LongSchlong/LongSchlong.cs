@@ -73,9 +73,50 @@ namespace Julius.LongSchlong
             return (result, carry);
         }
 
-        private LongSchlong Add(LongSchlong number)
+        private (byte[] result, int carry) Subtract_SameLength(LongSchlong number, int maxLength)
         {
             int carry = 0;
+            byte[] result = new byte[maxLength];
+
+            for (int i = maxLength - 1; i >= 0; i--)
+            {
+                int res = number.actualNumber[i] - (this.actualNumber[i] + carry);
+                carry = res < 0 ? 1 : 0;
+                result[i] = Convert.ToByte(Math.Abs(res));
+            }
+            return (result, carry);
+        }
+
+        private LongSchlong Subtract(LongSchlong number)
+        {
+            int carry;
+            byte[] result;
+            int maxLength = GetResultLength(number);
+
+            //same length
+            if (number.actualNumber.Length == this.actualNumber.Length)
+            {
+                var res = Subtract_SameLength(number, maxLength);
+                carry = res.carry;
+                result = res.result;
+            }
+            else
+            {
+                throw new Exception("NOT SAME LENGTH");
+            }
+            //Extend the array for carry values: eg. 500(3) + 500(3) = 1000(4)
+            if (carry == 1)
+            {
+                Array.Resize(ref this.actualNumber, this.actualNumber.Length + 1);
+                this.actualNumber[this.actualNumber.Length - 1] = 1;
+            }
+            this.actualNumber = result;
+            return this;
+        }
+
+        private LongSchlong Add(LongSchlong number)
+        {
+            int carry;
             byte[] result;
             int maxLength = GetResultLength(number);
 
@@ -106,6 +147,11 @@ namespace Julius.LongSchlong
         public static LongSchlong operator +(LongSchlong val1, LongSchlong val2)
         {
             return new LongSchlong(val1.Add(val2));
+        }
+
+        public static LongSchlong operator -(LongSchlong val1, LongSchlong val2)
+        {
+            return new LongSchlong(val1.Subtract(val2));
         }
     }
 }
