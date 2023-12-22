@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using System.Text;
+﻿using System;
 
 namespace Julius.LongSchlong
 {
@@ -36,11 +35,10 @@ namespace Julius.LongSchlong
         {
             return Math.Max(number.actualNumber.Length, this.actualNumber.Length);
         }
-
-
         private int GetNumberIfInRange(byte[] number, int index)
         {
-            return number.Length >= index ? 0 : number[index];
+            int max = number.Length - 1 - index;
+            return max < 0 ? 0 : number[max];
         }
         private (byte[] result, int carry) Add_SameLength(LongSchlong number, int maxLength)
         {
@@ -62,12 +60,14 @@ namespace Julius.LongSchlong
             int carry = 0;
             byte[] result = new byte[maxLength];
 
-            for (int i = maxLength - 1; i >= 0; i--)
+            for (int i = 0; i < maxLength; i++)
             {
-                int res = carry + GetNumberIfInRange(number.actualNumber, i) + GetNumberIfInRange(this.actualNumber, i);
-                Console.WriteLine(res + ":" + i + ":" + number.actualNumber.Length + ":" + this.actualNumber.Length) ;
+                int value1 = GetNumberIfInRange(number.actualNumber, i);
+                int value2 = GetNumberIfInRange(this.actualNumber, i);
+                var res = carry + value1 + value2;
                 carry = res > 9 ? 1 : 0;
-                result[i] = Convert.ToByte(res > 9 ? 0 : res);
+
+                result[maxLength - i - 1] = Convert.ToByte(res > 9 ? 0 : res);
             }
 
             return (result, carry);
